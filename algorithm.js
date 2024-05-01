@@ -1,6 +1,11 @@
 const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si type (0 - null, 1 - X, 2 - 0)
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
+const squareColor = "#8f2e04"; //culoarea patratelor
+
+const game = {
+    playerTurn: 1
+};
 
 //functia de initializare a matrix - se executa la incarcarea paginii
 function initSquares() {
@@ -11,7 +16,7 @@ function initSquares() {
             matrix[i].push({
                 x: i * squareSize,
                 y: j * squareSize,
-                color: "brown",
+                color: squareColor,
                 side: 0
             });
         }

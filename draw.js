@@ -6,5 +6,11 @@ function drawSquares() {
             square(matrix[i][j].x, matrix[i][j].y, squareSize);
         }
     }
-  
+}
+
+//functia care deseneaza informatiile despre joc
+function drawGameStats() {
+    fill("white");
+    textSize(20);
+    text("Player's " + game.playerTurn + " turn", 10, 520);
 }

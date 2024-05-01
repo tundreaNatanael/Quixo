@@ -1,5 +1,5 @@
 let tabWidth = 500;
-let tabHeight = 500;
+let tabHeight = 530;
 
 function setup() {
   createCanvas(tabWidth, tabHeight);
@@ -8,5 +8,6 @@ function setup() {
 function draw() {
   background("black");
   drawSquares();
+  drawGameStats();
 }
 
