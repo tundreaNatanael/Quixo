@@ -3,7 +3,8 @@ const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#8f2e04"; //culoarea patratelor
 
-const game = { //obiectul care contine informatii despre joc
+//obiectul care contine informatii despre joc
+const game = {
     playerTurn: 1, //jucatorul curent (1 - X, 2 - 0)
     antSquare: 0 //patratul pe care s-a dat click anterior - daca e 0 atuncea inseamna ca nu s-a dat click anterior ([i, j])
 };
@@ -24,6 +25,7 @@ function initSquares() {
     }
 }
 
+//functia care se apeleaza cand se da click pe un patrat (primeste coordonatele patratului) -> (returneaza true sau false daca sunt corecte coordonatele)
 function clickedSquare(i, j) {
     if(
         game.antSquare == 0 && //sa nu fie niciun patrat selectat anterior
@@ -43,14 +45,14 @@ function clickedSquare(i, j) {
             ) //daca e pe aceiasi linie sau coloana cu patratul selectat anterior
         ){
             interchange(game.antSquare, [i, j]) //facem schimbarea
-            game.playerTurn = 3 - game.playerTurn; //schimbam jucatorul
+            game.playerTurn = 3 - game.playerTurn; //schimbam randul jucatorului
             game.antSquare = 0; //deselctam patratul
             return true
         }
     }
     return false
 }
-
+//functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
 function interchange(chosen, target){
     if(chosen[0] == target[0]){ //daca schimbarea se pe linie
         if(chosen[1] < target[1]){ //daca schimbarea se face spre dreapta

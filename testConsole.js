@@ -1,4 +1,4 @@
-// test the program in node.js
+// test the program in console
 initSquares();
 console.log("first click: ", clickedSquare(3, 0));
 console.log("second click: ", clickedSquare(0, 0));
