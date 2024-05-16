@@ -10,6 +10,7 @@ function draw() {
   drawSquares();
   drawGameStats();
   drawResetButton();
+  squareHover();
 }
 
 function mouseClicked(){

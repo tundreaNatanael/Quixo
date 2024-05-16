@@ -26,3 +26,15 @@ function drawResetButton() {
     textSize(15);
     text("Reset", tabWidth-70, tabHeight-10);
 }
+
+//functia care ne arata care asupra carui patrat ne aflam cu mouse-ul
+function squareHover() {
+    for (let i = 0; i < boardSize; i++) {
+        for(let j = 0; j < boardSize; j++){
+            if(mouseX > matrix[i][j].x && mouseX < matrix[i][j].x + squareSize && mouseY > matrix[i][j].y && mouseY < matrix[i][j].y + squareSize){
+                fill("grey");
+                square(matrix[i][j].x,matrix[i][j].y, squareSize);
+            }
+        }
+    }
+}
