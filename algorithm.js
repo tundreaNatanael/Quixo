@@ -2,8 +2,8 @@ const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, colo
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#8f2e04"; //culoarea patratelor
-constplayerName1 = "1";
-constplayerName2 = "2";
+constplayerName1 = "X";
+constplayerName2 = "O";
 
 //obiectul care contine informatii despre joc
 const game = {
