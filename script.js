@@ -3,11 +3,18 @@ let tabHeight = 530;
 
 function setup() {
   createCanvas(tabWidth, tabHeight);
-  initSquares();
+  initGame();
 }
 function draw() {
   background("black");
   drawSquares();
   drawGameStats();
+  drawResetButton();
+}
+
+function mouseClicked(){
+  if(mouseX > tabWidth-100 && mouseX < tabWidth && mouseY > tabHeight-30 && mouseY < tabHeight){
+    initGame();
+  }
 }
 

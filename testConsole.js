@@ -10,7 +10,7 @@ function showMatrixConsole(){
 }
 
 // program
-initSquares();
+initGame();
 matrix[2][0].side = 1;
 matrix[2][1].side = 1;
 matrix[2][2].side = 1;

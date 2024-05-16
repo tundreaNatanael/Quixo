@@ -2,16 +2,37 @@ const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, colo
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#8f2e04"; //culoarea patratelor
+constplayerName1 = "1";
+constplayerName2 = "2";
 
 //obiectul care contine informatii despre joc
 const game = {
     playerTurn: 1, //jucatorul curent (1 - X, 2 - 0)
     antSquare: 0, //patratul pe care s-a dat click anterior - daca e 0 atuncea inseamna ca nu s-a dat click anterior (i, j)
-    winner : 0 //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
+    winner : 0, //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
+    playerName1: constplayerName1, //setam initial numele jucatorului 1 cu "1"
+    playerName2: constplayerName2 //setam initial numele jucatorului 2 cu "2"
 };
 
 //0functia de initializare a matrix - se executa la incarcarea paginii
-function initSquares() {
+function initGame() {
+    //reluam jocul de la inceput
+    game.playerTurn = 1 //jucatorul curent (1 - X, 2 - 0)
+    game.antSquare = 0 //patratul pe care s-a dat click anterior - daca e 0 atuncea inseamna ca nu s-a dat click anterior (i, j)
+    game.winner = 0 //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
+
+    //initializam numele jucatorilor cu valorile din inputurile de pe pagina
+    if(document.getElementById("inputPlayerName1") != null)
+        constplayerName1 = String(document.getElementById("inputPlayerName1").value);
+    if(document.getElementById("inputPlayerName2") != null)
+        constplayerName2 = String(document.getElementById("inputPlayerName2").value);
+
+    if(constplayerName1 != "")
+        game.playerName1 = constplayerName1;
+    if(constplayerName2 != "")
+        game.playerName2 = constplayerName2;
+
+    //initializam matrix cu patratele tablei de joc
     for (let i = 0; i < boardSize; i++) { //parcurgem liniile tablei
         matrix.push([]); //adaugam o linie noua goala in matrix
         for (let j = 0; j < boardSize; j++) { //parcurgem coloanele tablei
