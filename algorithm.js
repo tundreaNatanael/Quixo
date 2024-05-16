@@ -1,4 +1,4 @@
-const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si type (0 - gol, 1 - X, 2 - 0)
+const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#8f2e04"; //culoarea patratelor
