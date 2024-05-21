@@ -13,7 +13,8 @@ const game = {
     antSquare: 0, //patratul pe care s-a dat click anterior - daca e 0 atuncea inseamna ca nu s-a dat click anterior (i, j)
     winner : 0, //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
     playerName1: constplayerName1, //setam initial numele jucatorului 1 cu "1"
-    playerName2: constplayerName2 //setam initial numele jucatorului 2 cu "2"
+    playerName2: constplayerName2, //setam initial numele jucatorului 2 cu "2"
+    typeOfGame: 2 //tipul de joc (2 - jucator vs jucator, 1 - jucator vs calculator slab, 3 - jucator vs calculator moderat)
 };
 
 //0functia de initializare a matrix - se executa la incarcarea paginii
