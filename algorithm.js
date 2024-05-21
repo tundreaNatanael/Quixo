@@ -2,6 +2,8 @@ const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, colo
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#8f2e04"; //culoarea patratelor
+const startBoardX = 0; //pozitia x de start a tablei de joc
+const startBoardY = 0; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
 constplayerName2 = "O";
 
@@ -38,8 +40,8 @@ function initGame() {
         for (let j = 0; j < boardSize; j++) { //parcurgem coloanele tablei
             //introducem pe fiecare pozitie din matrix un obiect care contine proprietatile x, y, color si type
             matrix[i].push({
-                x: i * squareSize,
-                y: j * squareSize,
+                x: i * squareSize + startBoardX,
+                y: j * squareSize + startBoardY,
                 color: squareColor,
                 side: 0
             });
@@ -74,34 +76,6 @@ function clickedSquare(i, j) {
     }
     return false
 }
-//-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
-function change(chosen, target) {
-    if (chosen.i == target.i) { // If the change is on the same row
-        if (chosen.j < target.j) { // If the change is towards the right
-            for (let j = chosen.j; j < target.j; j++) {
-                matrix[chosen.i][j].side = matrix[chosen.i][j + 1].side;
-            }
-            matrix[target.i][target.j].side = game.playerTurn;
-        } else { // If the change is towards the left
-            for (let j = chosen.j; j >= target.j; j--) {
-                matrix[chosen.i][j].side = matrix[chosen.i][j - 1].side;
-            }
-            matrix[target.i][target.j].side = game.playerTurn;
-        }
-    } else { // If the change is on the same column
-        if (chosen.i < target.i) { // If the change is downwards
-            for (let i = chosen.i; i < target.i; i++) {
-                matrix[i][chosen.j].side = matrix[i + 1][chosen.j].side;
-            }
-            matrix[target.i][target.j].side = game.playerTurn;
-        } else { // If the change is upwards
-            for (let i = chosen.i; i > target.i; i--) {
-                matrix[i][chosen.j].side = matrix[i - 1][chosen.j].side;
-            }
-            matrix[target.i][target.j].side = game.playerTurn;
-        }
-    }
-}
 
 //0functia care verifica daca jocul mai poate fi jucat (ramane 0 sau modifica game.winner cu 1 sau 2 daca este castigator)
 function checkGameEnd(){
@@ -111,7 +85,7 @@ function checkGameEnd(){
             return true
         }
         else{
-            game.winner = 3 - game.playerTurn
+            game.winner = 3 - game.playerTurn //castgatorul este celalalt jucator
             return true
         }
     }
@@ -167,4 +141,32 @@ function checkDiagonals(testPlayer){
             break;
         }
     return diag1Win || diag2Win
+}
+//-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
+function change(chosen, target) {
+    if (chosen.i == target.i) { // If the change is on the same row
+        if (chosen.j < target.j) { // If the change is towards the right
+            for (let j = chosen.j; j < target.j; j++) {
+                matrix[chosen.i][j].side = matrix[chosen.i][j + 1].side;
+            }
+            matrix[target.i][target.j].side = game.playerTurn;
+        } else { // If the change is towards the left
+            for (let j = chosen.j; j >= target.j; j--) {
+                matrix[chosen.i][j].side = matrix[chosen.i][j - 1].side;
+            }
+            matrix[target.i][target.j].side = game.playerTurn;
+        }
+    } else { // If the change is on the same column
+        if (chosen.i < target.i) { // If the change is downwards
+            for (let i = chosen.i; i < target.i; i++) {
+                matrix[i][chosen.j].side = matrix[i + 1][chosen.j].side;
+            }
+            matrix[target.i][target.j].side = game.playerTurn;
+        } else { // If the change is upwards
+            for (let i = chosen.i; i > target.i; i--) {
+                matrix[i][chosen.j].side = matrix[i - 1][chosen.j].side;
+            }
+            matrix[target.i][target.j].side = game.playerTurn;
+        }
+    }
 }
