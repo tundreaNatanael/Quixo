@@ -26,13 +26,13 @@ function drawGameStats() {
     rect(tabWidth-950, tabHeight-380, 200, 30);// Pătratul pentru text 
     if(game.playerTurn == 1){
         fill("white");// Culoarea scrisului
-        textSize(20);
+        textSize(21);
         text("Player's " + game.playerName1 + " turn", 460, 640);
      } 
     else 
     {
         fill("white");
-        textSize(20);
+        textSize(21);
         text("Player's " + game.playerName2 + " turn", 460, 640);
     }
 }
@@ -42,7 +42,7 @@ function drawResetButton() {
     fill("#6f1d1b");
     rect(tabWidth-550, tabHeight-380, 100, 30);
     fill("white");
-    textSize(20);
+    textSize(21);
     text("Reset", tabWidth-525, tabHeight-360);
 }
 //functia care deseneaza butonu de jucat cu bot usor
@@ -50,7 +50,7 @@ function drawPlayerVsBotEasyButton(){
     fill("#6f1d1b");
     rect(tabWidth-110, tabHeight-990, 100, 30);
     fill("white");
-    textSize(20);
+    textSize(21);
     text("Bot easy", tabWidth-100, tabHeight-970);
 }
 //functia care deseneaza butonu de jucat cu bot greu
