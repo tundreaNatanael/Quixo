@@ -1,12 +1,15 @@
-let tabWidth = 500;
-let tabHeight = 530;
+let tabWidth = 1400;
+let tabHeight = 1000;
 
 function setup() {
   createCanvas(tabWidth, tabHeight);
   initGame();
 }
 function draw() {
-  background("black");
+  background("#ffe6a7");
+  drawCircle();
+  drawPlayerVsBotEasyButton();
+  drawPlayerVsBotHardButton();
   drawSquares();
   drawGameStats();
   drawResetButton();

@@ -1,10 +1,10 @@
 const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
-const squareColor = "#8f2e04"; //culoarea patratelor
+const squareColor = "#99582a"; //culoarea patratelor
 const squareHoverColor = "grey"; //culoarea patratelor cand trecem cu mouse-ul peste ele
-const startBoardX = 0; //pozitia x de start a tablei de joc
-const startBoardY = 0; //pozitia y de start a tablei de joc
+const startBoardX = 450; //pozitia x de start a tablei de joc
+const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
 constplayerName2 = "O";
 
