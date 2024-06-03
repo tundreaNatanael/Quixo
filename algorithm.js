@@ -103,16 +103,18 @@ function checkWinner(checkPlayer){
 
 //-functia care verifica daca jucatorul a castigat pe linii (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkLines(testPlayer){
-    for(let i=0; i<boardSize && lineWin; i++){
-        let lineWin = true
-        for(let j=0; j<boardSize; j++)
-            if(matrix[i][j].side != testPlayer){
-                lineWin = false
-                break;
-            }
+    for (let i = 0; i < boardSize; i++) {
+        let lineWin = true;
+        for (let j = 0; j < boardSize; j++) {
+          if (matrix[i][j].side != testPlayer) {
+            lineWin = false;
+            break;
+          }
+        }
+        if (lineWin) return true;
+      }
+      return false;
     }
-    return lineWin
-}
 
 //-functia care verifica daca jucatorul a castigat pe coloane (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkColumns(testPlayer){
