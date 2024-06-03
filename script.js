@@ -13,6 +13,7 @@ function draw() {
   drawSquares();
   drawGameStats();
   drawResetButton();
+  squareHover();
   if (game.winner) {
     fill("yellow");
     textSize(32);
