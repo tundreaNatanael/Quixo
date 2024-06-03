@@ -23,8 +23,8 @@ function draw() {
 }
 
 function mouseClicked() {
-  checkInsideBoard()
-  //checkReset()
+  checkInsideBoard();
+  checkReset();
   //checkPlayerVsBotEasy()
 
   // if (mouseX > tabWidth - 100 && mouseX < tabWidth && mouseY > tabHeight - 30 && mouseY < tabHeight) {

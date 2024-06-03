@@ -11,10 +11,10 @@ constplayerName2 = "O";
 resetSizeX = 100;
 resetSizeY = 30;
 
-playerVsBotEasyButtonSize = 100;
+playerVsBotEasyButtonSizeX = 100;
 playerVsBotEasyButtonSizeY = 30;
 
-playerVsBotHardButtonSize = 100;
+playerVsBotHardButtonSizeX = 100;
 playerVsBotHardButtonSizeY = 30;
 
 //obiectul care contine informatii despre joc

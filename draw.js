@@ -39,7 +39,7 @@ function drawGameStats() {
 //functia care deseneaza butonul de reset
 function drawResetButton() {
     fill("#6f1d1b");
-    rect(tabWidth - 550, tabHeight - 380, 100, 30);
+    rect(tabWidth - 550, tabHeight - 380, resetSizeX, resetSizeY);
     fill("white");
     textSize(21);
     text("Reset", tabWidth - 525, tabHeight - 360);
