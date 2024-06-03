@@ -8,6 +8,15 @@ const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
 constplayerName2 = "O";
 
+resetSizeX = 100;
+resetSizeY = 30;
+
+playerVsBotEasyButtonSize = 100;
+playerVsBotEasyButtonSizeY = 30;
+
+playerVsBotHardButtonSize = 100;
+playerVsBotHardButtonSizeY = 30;
+
 //obiectul care contine informatii despre joc
 const game = {
     playerTurn: 1, //jucatorul curent (1 - X, 2 - 0)
