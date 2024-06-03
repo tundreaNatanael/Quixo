@@ -134,20 +134,22 @@ function checkColumns(testPlayer){
 
 //-functia care verifica daca jucatorul a castigat pe diagonale (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkDiagonals(testPlayer){
-    let diag1Win = true
-    for(let i=0; i<boardSize && diag1Win; i++)
-        if(matrix[i][i].side != testPlayer){
-            diagWin = false
-            break;
-        }
-    
-    let diag2Win = true
-    for(let i=0; i<boardSize && diag2Win; i++)
-        if(matrix[i][boardSize-i-1].side != testPlayer){
-            diagWin = false
-            break;
-        }
-    return diag1Win || diag2Win
+    let diag1Win = true;
+  for (let i = 0; i < boardSize; i++) {
+    if (matrix[i][i].side != testPlayer) {
+      diag1Win = false;
+      break;
+    }
+  }
+  
+  let diag2Win = true;
+  for (let i = 0; i < boardSize; i++) {
+    if (matrix[i][boardSize - i - 1].side != testPlayer) {
+      diag2Win = false;
+      break;
+    }
+  }
+  return diag1Win || diag2Win;
 }
 //-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
 function change(chosen, target) {
