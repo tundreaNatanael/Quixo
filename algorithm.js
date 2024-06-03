@@ -103,40 +103,36 @@ function checkWinner(checkPlayer){
 
 //-functia care verifica daca jucatorul a castigat pe linii (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkLines(testPlayer){
-    for(let i=0; i<boardSize ; i++){
+    for(let i=0; i<boardSize && lineWin; i++){
         let lineWin = true
-        for(let j=0; j<boardSize; j++){
+        for(let j=0; j<boardSize; j++)
             if(matrix[i][j].side != testPlayer){
                 lineWin = false
                 break;
-               }   
             }
-            if(lineWin) return true;
-        }
-    return false;
+    }
+    return lineWin
 }
 
 //-functia care verifica daca jucatorul a castigat pe coloane (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkColumns(testPlayer){
-    for(let j=0; j<boardSize; j++){
-        let colWin = true;
-        for(let i=0; i<boardSize; i++){
+    let colWin = true
+    for(let j=0; j<boardSize && colWin; j++){
+        for(let i=0; i<boardSize; i++)
             if(matrix[i][j].side != testPlayer){
                 colWin = false
                 break;
             }
     }
-    if(colWin) return true;
-    }
-    return false;
+    return colWin
 }
 
 //-functia care verifica daca jucatorul a castigat pe diagonale (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkDiagonals(testPlayer){
     let diag1Win = true
-    for(let i=0; i<boardSize; i++){
+    for(let i=0; i<boardSize && diag1Win; i++)
         if(matrix[i][i].side != testPlayer){
-            diag1Win = false
+            diagWin = false
             break;
         }
     
@@ -146,14 +142,6 @@ function checkDiagonals(testPlayer){
             diagWin = false
             break;
         }
-    }
-    let diag2Win= true;
-    for(let i = 0; i< boardSize; i++){
-        if(matrix [i] [boardSize - i -1].side != testPlayer){
-            diag2Win = false;
-            break;
-        }
-    }
     return diag1Win || diag2Win
 }
 //-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
