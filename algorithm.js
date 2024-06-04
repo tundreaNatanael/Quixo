@@ -10,9 +10,13 @@ constplayerName2 = "O";
 
 resetSizeX = 850;
 resetSizeY = 620;
+scrisSizeX = 870;
+scrisSizeY = 640;
 
 playerVsBotEasyButtonSizeX = 1290;
 playerVsBotEasyButtonSizeY = 10;
+esaySizeX = 1300;
+esaySizeY = 32;
 
 playerVsBotHardButtonSizeX = 1290;
 playerVsBotHardButtonSizeY = 50;
