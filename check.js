@@ -12,8 +12,8 @@ function checkInsideBoard() {
 
 function checkReset(){
     if(
-        (startBoardX + 4 *squareSize <= mouseX && mouseX <= startBoardX + 4 *squareSize + playerVsBotEasyButtonSize) &&
-        (startBoardY + 4 *squareSize <= mouseY && mouseY <= startBoardY + 4 *squareSize + playerVsBotEasyButtonSize)
+        (mouseX >= resetButton.x && mouseX <= resetButton.x + resetButton.xSize) &&
+        (mouseY >= resetButton.y &&  mouseY <= resetButton.y + resetButton.ySize)
     ){
         initGame();
     }
