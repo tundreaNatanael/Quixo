@@ -24,13 +24,13 @@ resetButton = {
 }
 
 playerVeasyBotButton = {
-    x: 1290,
+    x: 1200,
     y: 10,
-    xSize: 100,
+    xSize: 190,
     ySize: 30,
     color: "#6f1d1b",
     text: {
-        x: 1290 + 10,
+        x: 1200 + 10,
         y: 10 + 22,
         size: 21,
         color: "white",
