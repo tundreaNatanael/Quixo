@@ -14,7 +14,7 @@ checkReset(){
         (startBoardX + 4 *squareSize <= mouseX && mouseX <= startBoardX + 4 *squareSize + playerVsBotEasyButtonSize) &&
         (startBoardY + 4 *squareSize <= mouseY && mouseY <= startBoardY + 4 *squareSize + playerVsBotEasyButtonSize)
     ){
-        initGame()
+        initGame();
     }
 }
 checkPlayerVsBotEasy();{
