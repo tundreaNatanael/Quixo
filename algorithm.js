@@ -8,11 +8,11 @@ const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
 constplayerName2 = "O";
 
-resetSizeX = 100;
-resetSizeY = 30;
+resetSizeX = 850;
+resetSizeY = 620;
 
-playerVsBotEasyButtonSizeX = 100;
-playerVsBotEasyButtonSizeY = 30;
+playerVsBotEasyButtonSizeX = 1290;
+playerVsBotEasyButtonSizeY = 10;
 
 playerVsBotHardButtonSizeX = 100;
 playerVsBotHardButtonSizeY = 30;
