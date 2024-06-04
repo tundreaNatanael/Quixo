@@ -8,20 +8,35 @@ const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
 constplayerName2 = "O";
 
-resetSizeX = 850;
-resetSizeY = 620;
-scrisSizeX = 870;
-scrisSizeY = 640;
+resetButton = {
+    x: 850,
+    y: 620,
+    xSize: 100,
+    ySize: 30,
+    color: "red",
+    text: {
+        x: resetButton.x + 20,
+        y: resetButton.y + 20,
+        size: 20,
+        color: "white",
+        text: "Reset"
+    }
+}
 
-playerVsBotEasyButtonSizeX = 1290;
-playerVsBotEasyButtonSizeY = 10;
-esaySizeX = 1300;
-esaySizeY = 32;
-
-playerVsBotHardButtonSizeX = 1290;
-playerVsBotHardButtonSizeY = 50;
-textSizeX = 1300;
-textSizeY = 73; 
+playerVeasyBotButton = {
+    x: 1290,
+    y: 10,
+    xSize: 100,
+    ySize: 30,
+    color: "red",
+    text: {
+        x: resetButton.x + 10,
+        y: resetButton.y + 22,
+        size: 20,
+        color: "white",
+        text: "Player vs easyBot"
+    }
+}
 
 //obiectul care contine informatii despre joc
 const game = {
