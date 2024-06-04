@@ -42,7 +42,7 @@ function drawResetButton() {
     rect(resetSizeX, resetSizeY, 100, 30);
     fill("white");
     textSize(21);
-    text("Reset", tabWidth - 525, tabHeight - 360);
+    text("Reset", scrisSizeX, scrisSizeY);
 }
 //functia care deseneaza butonu de jucat cu bot usor
 function drawPlayerVsBotEasyButton() {
@@ -50,7 +50,7 @@ function drawPlayerVsBotEasyButton() {
     rect(playerVsBotEasyButtonSizeX, playerVsBotEasyButtonSizeY, 100, 30);
     fill("white");
     textSize(21);
-    text("Bot easy", tabWidth - 100, tabHeight - 970);
+    text("Bot easy", esaySizeX, esaySizeY);
 }
 //functia care deseneaza butonu de jucat cu bot greu
 function drawPlayerVsBotHardButton() {
