@@ -1,14 +1,14 @@
 //fisierul care contine functiile care verifica anumite lucruri
 
 //functia care verifica daca mouse-ul se afla in interiorul tablei de joc si apeleaza functia clickedSquare calculand i si j din coordonatele mouseX si mouseY
-// checkInsideBoard() {
-//     if(
-//         (startBoardX <= mouseX && mouseX <= startBoardX + boardSize * squareSize) &&
-//         (startBoardY <= mouseY && mouseY <= startBoardY + boardSize * squareSize)
-//     ){
-//         clickedSquare(Math.floor((mouseY - startBoardY)/squareSize), Math.floor((mouseX - startBoardX)/squareSize));
-//     }
-// }
+checkInsideBoard() {
+    if(
+        (startBoardX <= mouseX && mouseX <= startBoardX + boardSize * squareSize) &&
+        (startBoardY <= mouseY && mouseY <= startBoardY + boardSize * squareSize)
+    ){
+        clickedSquare(Math.floor((mouseY - startBoardY)/squareSize), Math.floor((mouseX - startBoardX)/squareSize));
+    }
+}
 
 checkReset(){
     if(
