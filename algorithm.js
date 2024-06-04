@@ -3,6 +3,7 @@ const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#99582a"; //culoarea patratelor
 const squareHoverColor = "grey"; //culoarea patratelor cand trecem cu mouse-ul peste ele
+const squareSelectedColor = "yellow"; //culoarea patratelor selectate
 const startBoardX = 450; //pozitia x de start a tablei de joc
 const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
@@ -91,6 +92,7 @@ function clickedSquare(i, j) {
     ) 
     {
         game.antSquare = {i: i, j: j}; //game.antSquare primesc coordonatele patratului selectat
+        game.antSquare.color = squareSelectedColor; //patratul selectat devine de alta culoare
         return true
     }
     else{
@@ -103,6 +105,7 @@ function clickedSquare(i, j) {
         ){
             change(game.antSquare, {i: i, j: j}) //facem schimbarea
             game.playerTurn = 3 - game.playerTurn; //schimbam randul jucatorului
+            matrix[game.antSquare.i][game.antSquare.j].color = squareColor; //patratul selectat anterior revine la culoarea initiala
             game.antSquare = 0; //deselctam patratul
             return true
         }
