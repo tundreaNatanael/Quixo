@@ -17,3 +17,6 @@ checkReset();{
         clickedSquare(Math.floor((mouseY - (startBoardY + 4 *squareSize)/squareSize)), Math.floor((mouseX - (startBoardX + 4 *squareSize)/squareSize)));
     }
 }
+checkPlayerVsBotEasy();{
+    
+}
