@@ -21,47 +21,6 @@ function draw() {
   }
 }
 function mouseClicked() {
-<<<<<<< HEAD
-   if (mouseX > tabWidth - 100 && mouseX < tabWidth && mouseY > tabHeight - 30 && mouseY < tabHeight) {
-    initGame();
-   } else {
-     for (let i = 0; i < boardSize; i++) {
-       for (let j = 0; j < boardSize; j++) {
-       if (mouseX > matrix[i][j].x && mouseX < matrix[i][j].x + squareSize &&
-           mouseY > matrix[i][j].y && mouseY < matrix[i][j].y + squareSize) {
-          if (clickedSquare(i, j)) {
-            if (checkGameEnd()) {
-            }
-           }
-         }
-       }
-     }
-   }
-   checkInsideBoard();
-    checkReset();
-   checkPlayerVsBotEasy()
-}
-
-=======
   checkInsideBoard();
   checkReset();
-  //checkPlayerVsBotEasy()
-
-  // if (mouseX > tabWidth - 100 && mouseX < tabWidth && mouseY > tabHeight - 30 && mouseY < tabHeight) {
-  //   initGame();
-  // } else {
-  //   for (let i = 0; i < boardSize; i++) {
-  //     for (let j = 0; j < boardSize; j++) {
-  //       if (mouseX > matrix[i][j].x && mouseX < matrix[i][j].x + squareSize &&
-  //           mouseY > matrix[i][j].y && mouseY < matrix[i][j].y + squareSize) {
-  //         if (clickedSquare(i, j)) {
-  //           if (checkGameEnd()) {
-  //             noLoop();
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
->>>>>>> 58f4a27f30bd38bb49fa1e0985a1eb5a4ad3dda6
