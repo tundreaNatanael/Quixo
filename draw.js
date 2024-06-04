@@ -55,7 +55,7 @@ function drawPlayerVsBotEasyButton() {
 //functia care deseneaza butonu de jucat cu bot greu
 function drawPlayerVsBotHardButton() {
     fill("#6f1d1b");
-    rect(tabWidth - 110, tabHeight - 950, 100, 30);
+    rect(playerVsBotHardButtonSizeX ,playerVsBotHardButtonSizeY, 100, 30);
     fill("white");
     textSize(20);
     text("Bot hard", tabWidth - 100, tabHeight - 930);

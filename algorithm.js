@@ -14,8 +14,8 @@ resetSizeY = 30;
 playerVsBotEasyButtonSizeX = 100;
 playerVsBotEasyButtonSizeY = 30;
 
-playerVsBotHardButtonSizeX = 100;
-playerVsBotHardButtonSizeY = 30;
+playerVsBotHardButtonSizeX = 1290;
+playerVsBotHardButtonSizeY = 50;
 
 //obiectul care contine informatii despre joc
 const game = {
