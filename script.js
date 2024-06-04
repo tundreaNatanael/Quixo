@@ -18,29 +18,26 @@ function draw() {
     fill("yellow");
     textSize(32);
     text(game.winner + " wins!", tabWidth / 2 - 100, tabHeight / 2);
-    noLoop();
   }
 }
-
 function mouseClicked() {
-  checkInsideBoard();
-  checkReset();
-  //checkPlayerVsBotEasy()
-
-  // if (mouseX > tabWidth - 100 && mouseX < tabWidth && mouseY > tabHeight - 30 && mouseY < tabHeight) {
-  //   initGame();
-  // } else {
-  //   for (let i = 0; i < boardSize; i++) {
-  //     for (let j = 0; j < boardSize; j++) {
-  //       if (mouseX > matrix[i][j].x && mouseX < matrix[i][j].x + squareSize &&
-  //           mouseY > matrix[i][j].y && mouseY < matrix[i][j].y + squareSize) {
-  //         if (clickedSquare(i, j)) {
-  //           if (checkGameEnd()) {
-  //             noLoop();
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+   if (mouseX > tabWidth - 100 && mouseX < tabWidth && mouseY > tabHeight - 30 && mouseY < tabHeight) {
+    initGame();
+   } else {
+     for (let i = 0; i < boardSize; i++) {
+       for (let j = 0; j < boardSize; j++) {
+       if (mouseX > matrix[i][j].x && mouseX < matrix[i][j].x + squareSize &&
+           mouseY > matrix[i][j].y && mouseY < matrix[i][j].y + squareSize) {
+          if (clickedSquare(i, j)) {
+            if (checkGameEnd()) {
+            }
+           }
+         }
+       }
+     }
+   }
+   checkInsideBoard();
+    checkReset();
+   checkPlayerVsBotEasy()
 }
+

@@ -194,3 +194,33 @@ function change(chosen, target) {
         }
     }
 }
+function botMakeRandomMove() {
+  let availableMoves = [];
+  for (let i = 0; i < boardSize; i++) {
+      for (let j = 0; j < boardSize; j++) {
+          if ((matrix[i][j].side == 0 || matrix[i][j].side == 2)) {
+              availableMoves.push({ i, j });
+          }
+      }
+  }
+
+  if (availableMoves.length > 0) {
+      const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+      clickedSquare(move.i, move.j);
+
+      availableMoves = [];
+      for (let i = 0; i < boardSize; i++) {
+          for (let j = 0; j < boardSize; j++) {
+              if ((i == move.i) || (j == move.j)) {
+                  availableMoves.push({ i, j });
+              }
+          }
+      }
+
+      if (availableMoves.length > 0) {
+          const secondMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+          change(move, secondMove);
+          game.playerTurn = 1;
+      }
+  }
+}
