@@ -19,4 +19,10 @@ function checkReset(){
     }
 }
 function checkPlayerVsBotEasy(){
+    if(
+        (mouseX >= playerVeasyBotButton.x && mouseX <= playerVeasyBotButton.x + playerVeasyBotButton.xSize ) &&
+        (mouseY >= playerVeasyBotButton.y && mouseY <= playerVeasyBotButton.y +playerVeasyBotButton.ySize)
+    ){
+        game.typeOfGame = 2;
+    }
 }
