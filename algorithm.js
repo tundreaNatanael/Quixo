@@ -1,4 +1,4 @@
-const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
+matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#99582a"; //culoarea patratelor
@@ -51,6 +51,7 @@ const game = {
 //0functia de initializare a matrix - se executa la incarcarea paginii
 function initGame() {
     //reluam jocul de la inceput
+    matrix = [] //golim matrix
     game.playerTurn = 1 //jucatorul curent (1 - X, 2 - 0)
     game.antSquare = 0 //patratul pe care s-a dat click anterior - daca e 0 atuncea inseamna ca nu s-a dat click anterior (i, j)
     game.winner = 0 //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
