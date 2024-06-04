@@ -8,7 +8,6 @@ function setup() {
 function draw() {
   background("#ffe6a7");
   drawCircle();
-  drawPlayerVsBotHardButton();
   drawPlayerVsBotEasyButton();
   drawSquares();
   drawGameStats();

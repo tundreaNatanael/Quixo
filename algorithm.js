@@ -13,11 +13,11 @@ resetButton = {
     y: 620,
     xSize: 100,
     ySize: 30,
-    color: "red",
+    color: "#6f1d1b",
     text: {
         x: 850 + 20,
         y: 620 + 20,
-        size: 20,
+        size: 21,
         color: "white",
         text: "Reset"
     }
@@ -28,11 +28,11 @@ playerVeasyBotButton = {
     y: 10,
     xSize: 100,
     ySize: 30,
-    color: "red",
+    color: "#6f1d1b",
     text: {
         x: 1290 + 10,
         y: 10 + 22,
-        size: 20,
+        size: 21,
         color: "white",
         text: "Player vs easyBot"
     }

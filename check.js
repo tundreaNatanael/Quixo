@@ -18,5 +18,5 @@ function checkReset(){
         initGame();
     }
 }
-function checkBotEasy(){
+function checkPlayerVsBotEasy(){
 }

@@ -38,27 +38,19 @@ function drawGameStats() {
 
 //functia care deseneaza butonul de reset
 function drawResetButton() {
-    fill("#6f1d1b");
-    rect(resetSizeX, resetSizeY, 100, 30);
-    fill("white");
-    textSize(21);
-    text("Reset", scrisSizeX, scrisSizeY);
+    fill(resetButton.color);
+    rect(resetButton.x, resetButton.y, resetButton.xSize, resetButton.ySize);
+    fill(resetButton.text.color);
+    textSize(resetButton.text.size);
+    text(resetButton.text.text, resetButton.text.x, resetButton.text.y);
 }
 //functia care deseneaza butonu de jucat cu bot usor
 function drawPlayerVsBotEasyButton() {
-    fill("#6f1d1b");
-    rect(playerVsBotEasyButtonSizeX, playerVsBotEasyButtonSizeY, 100, 30);
-    fill("white");
-    textSize(21);
-    text("Bot easy", esaySizeX, esaySizeY);
-}
-//functia care deseneaza butonu de jucat cu bot greu
-function drawPlayerVsBotHardButton() {
-    fill("#6f1d1b");
-    rect(playerVsBotHardButtonSizeX ,playerVsBotHardButtonSizeY, 100, 30);
-    fill("white");
-    textSize(20);
-    text("Bot hard", textSizeX, textSizeY);
+    fill(playerVeasyBotButton.color);
+    rect(playerVeasyBotButton.x, playerVeasyBotButton.y, playerVeasyBotButton.xSize, playerVeasyBotButton.ySize);
+    fill( playerVeasyBotButton.text.color);
+    textSize(playerVeasyBotButton.text.size);
+    text(playerVeasyBotButton.text.text, playerVeasyBotButton.text.x, playerVeasyBotButton.text.y);
 }
 //functia care ne arata care asupra carui patrat ne aflam cu mouse-ul
 function squareHover() {
