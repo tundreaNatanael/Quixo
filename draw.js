@@ -58,7 +58,7 @@ function drawPlayerVsBotHardButton() {
     rect(playerVsBotHardButtonSizeX ,playerVsBotHardButtonSizeY, 100, 30);
     fill("white");
     textSize(20);
-    text("Bot hard", tabWidth - 100, tabHeight - 930);
+    text("Bot hard", textSizeX, textSizeY);
 }
 //functia care ne arata care asupra carui patrat ne aflam cu mouse-ul
 function squareHover() {

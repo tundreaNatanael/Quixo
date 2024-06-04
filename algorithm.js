@@ -16,6 +16,8 @@ playerVsBotEasyButtonSizeY = 10;
 
 playerVsBotHardButtonSizeX = 1290;
 playerVsBotHardButtonSizeY = 50;
+textSizeX = 1300;
+textSizeY = 73; 
 
 //obiectul care contine informatii despre joc
 const game = {
