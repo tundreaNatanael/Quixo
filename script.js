@@ -44,3 +44,12 @@ function mouseClicked() {
   //   }
   // }
 }
+
+checkInsideBoard() {
+  if(
+      (startBoardX <= mouseX && mouseX <= startBoardX + boardSize * squareSize) &&
+      (startBoardY <= mouseY && mouseY <= startBoardY + boardSize * squareSize)
+  ){
+      clickedSquare(Math.floor((mouseY - startBoardY)/squareSize), Math.floor((mouseX - startBoardX)/squareSize));
+  }
+}
