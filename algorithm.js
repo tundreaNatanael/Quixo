@@ -113,6 +113,7 @@ function clickedSquare(i, j) {
             game.antSquare = 0; //deselctam patratul
             if(game.typeOfGame == 1 && game.playerTurn == 2) //daca jucam cu botul si e randul lui
                 botMove()
+            checkGameEnd()
             return true
         }
     }
@@ -148,5 +149,5 @@ function change(chosen, target) {
 //-functia care face miscarea botului
 function botMove(){
     while(!clickedSquare(Math.floor((Math.random() * 10)) % boardSize, Math.floor((Math.random() * 10)) % boardSize)) {}
-    while(!clickedSquare(Math.floor((Math.random() * 10)) % boardSize, Math.floor((Math.random() * 10)) % boardSize)){}
+    while(!clickedSquare(Math.floor((Math.random() * 10)) % boardSize, Math.floor((Math.random() * 10)) % boardSize)) {}
 }

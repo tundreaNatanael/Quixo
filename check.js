@@ -27,7 +27,6 @@ function checkPlayerVsBotEasy(){
         (mouseY >= playerVeasyBotButton.y && mouseY <= playerVeasyBotButton.y +playerVeasyBotButton.ySize)
     ){
         game.typeOfGame = 3 - game.typeOfGame;
-        console.log(game.typeOfGame)
         initGame();
         game.constplayerName2 = "Bot";
     }
@@ -36,6 +35,7 @@ function checkPlayerVsBotEasy(){
 //0functia care verifica daca jocul mai poate fi jucat (ramane 0 sau modifica game.winner cu 1 sau 2 daca este castigator)
 function checkGameEnd(){
     if(checkWinner(3 - game.playerTurn)){
+      console.log("verified")
         if(checkWinner(game.playerTurn)){
             game.winner = game.playerTurn
             drawEndGame()
