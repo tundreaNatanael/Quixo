@@ -35,7 +35,6 @@ function checkPlayerVsBotEasy(){
 //0functia care verifica daca jocul mai poate fi jucat (ramane 0 sau modifica game.winner cu 1 sau 2 daca este castigator)
 function checkGameEnd(){
     if(checkWinner(3 - game.playerTurn)){
-      console.log("verified")
         if(checkWinner(game.playerTurn)){
             game.winner = game.playerTurn
             drawEndGame()

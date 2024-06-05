@@ -113,7 +113,7 @@ function clickedSquare(i, j) {
             game.antSquare = 0; //deselctam patratul
             if(game.typeOfGame == 1 && game.playerTurn == 2) //daca jucam cu botul si e randul lui
                 botMove()
-            checkGameEnd()
+            console.log(checkGameEnd() + " " + game.winner);
             return true
         }
     }
