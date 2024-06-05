@@ -17,7 +17,7 @@ function drawSquares() {
     }
 }
 function drawCircle() {
-    fill("#432818");
+    fill(backgroundColor);
     circle(tabWidth - 700, tabHeight - 620, 740);
 }
 //functia care deseneaza informatiile despre joc
@@ -69,4 +69,16 @@ function squareHover() {
             rect(matrix[boardSize-1][k].x, matrix[boardSize-1][k].y, squareSize, squareSize); // Desenăm umbra peste pătrat
         } 
     }
+}
+
+//functia care afiseaza sfarsitul jocului
+function drawEndGame(){
+    fill(squareColor);
+    rect(startBoardX, startBoardY, boardSize * squareSize, boardSize * squareSize);
+    fill("white");
+    textSize(50);
+    if(game.winner == 1)
+        text(game.playerName1 + " wins!", startBoardX + boardSize * squareSize /2, startBoardY + boardSize * squareSize /2);
+    else
+        text(game.playerName2 + " wins!", tabWidth / 2 - 100, tabHeight / 2);
 }

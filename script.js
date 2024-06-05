@@ -13,16 +13,11 @@ function draw() {
   drawGameStats();
   drawResetButton();
   squareHover();
-  if (game.winner) {
-    fill("yellow");
-    textSize(32);
-    text(game.winner + " wins!", tabWidth / 2 - 100, tabHeight / 2);
-  }
+  checkGameEnd()
 }
 function mouseClicked() {
     checkInsideBoard();
     checkReset();
     checkPlayerVsBotEasy();
-    
 }
 

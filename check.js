@@ -35,10 +35,12 @@ function checkGameEnd(){
     if(checkWinner(3 - game.playerTurn)){
         if(checkWinner(game.playerTurn)){
             game.winner = game.playerTurn
+            drawEndGame()
             return true
         }
         else{
             game.winner = 3 - game.playerTurn //castgatorul este celalalt jucator
+            drawEndGame()
             return true
         }
     }
