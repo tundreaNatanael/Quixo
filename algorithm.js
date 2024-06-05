@@ -1,11 +1,43 @@
-const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
+matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
-const squareColor = "#8f2e04"; //culoarea patratelor
-const startBoardX = 0; //pozitia x de start a tablei de joc
-const startBoardY = 0; //pozitia y de start a tablei de joc
+const squareColor = "#99582a"; //culoarea patratelor
+const squareHoverColor = "grey"; //culoarea patratelor cand trecem cu mouse-ul peste ele
+const squareSelectedColor = "yellow"; //culoarea patratelor selectate
+const startBoardX = 450; //pozitia x de start a tablei de joc
+const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
 constplayerName2 = "O";
+
+resetButton = {
+    x: 850,
+    y: 620,
+    xSize: 100,
+    ySize: 30,
+    color: "#6f1d1b",
+    text: {
+        x: 850 + 20,
+        y: 620 + 20,
+        size: 21,
+        color: "white",
+        text: "Reset"
+    }
+}
+
+playerVeasyBotButton = {
+    x: 1200,
+    y: 10,
+    xSize: 190,
+    ySize: 30,
+    color: "#6f1d1b",
+    text: {
+        x: 1200 + 10,
+        y: 10 + 22,
+        size: 21,
+        color: "white",
+        text: "Player vs easyBot"
+    }
+}
 
 //obiectul care contine informatii despre joc
 const game = {
@@ -20,6 +52,7 @@ const game = {
 //0functia de initializare a matrix - se executa la incarcarea paginii
 function initGame() {
     //reluam jocul de la inceput
+    matrix = [] //golim matrix
     game.playerTurn = 1 //jucatorul curent (1 - X, 2 - 0)
     game.antSquare = 0 //patratul pe care s-a dat click anterior - daca e 0 atuncea inseamna ca nu s-a dat click anterior (i, j)
     game.winner = 0 //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
@@ -59,6 +92,7 @@ function clickedSquare(i, j) {
     ) 
     {
         game.antSquare = {i: i, j: j}; //game.antSquare primesc coordonatele patratului selectat
+        game.antSquare.color = squareSelectedColor; //patratul selectat devine de alta culoare
         return true
     }
     else{
@@ -71,6 +105,7 @@ function clickedSquare(i, j) {
         ){
             change(game.antSquare, {i: i, j: j}) //facem schimbarea
             game.playerTurn = 3 - game.playerTurn; //schimbam randul jucatorului
+            matrix[game.antSquare.i][game.antSquare.j].color = squareColor; //patratul selectat anterior revine la culoarea initiala
             game.antSquare = 0; //deselctam patratul
             return true
         }
@@ -102,46 +137,53 @@ function checkWinner(checkPlayer){
 
 //-functia care verifica daca jucatorul a castigat pe linii (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkLines(testPlayer){
-    let lineWin = true
-    for(let i=0; i<boardSize && lineWin; i++){
-        for(let j=0; j<boardSize; j++)
-            if(matrix[i][j].side != testPlayer){
-                lineWin = false
-                break;
-            }
+    for (let i = 0; i < boardSize; i++) {
+        let lineWin = true;
+        for (let j = 0; j < boardSize; j++) {
+          if (matrix[i][j].side != testPlayer) {
+            lineWin = false;
+            break;
+          }
+        }
+        if (lineWin) return true;
+      }
+      return false;
     }
-    return lineWin
-}
 
 //-functia care verifica daca jucatorul a castigat pe coloane (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkColumns(testPlayer){
-    let colWin = true
-    for(let j=0; j<boardSize && colWin; j++){
-        for(let i=0; i<boardSize; i++)
-            if(matrix[i][j].side != testPlayer){
-                colWin = false
-                break;
-            }
+    for (let j = 0; j < boardSize; j++) {
+        let colWin = true;
+        for (let i = 0; i < boardSize; i++) {
+          if (matrix[i][j].side != testPlayer) {
+            colWin = false;
+            break;
+          }
+        }
+        if (colWin) return true;
+      }
+      return false;
     }
-    return colWin
-}
+    
 
 //-functia care verifica daca jucatorul a castigat pe diagonale (returneaza true - daca a castigat, false - daca nu a castigat)
 function checkDiagonals(testPlayer){
-    let diag1Win = true
-    for(let i=0; i<boardSize && diag1Win; i++)
-        if(matrix[i][i].side != testPlayer){
-            diagWin = false
-            break;
-        }
-    
-    let diag2Win = true
-    for(let i=0; i<boardSize && diag2Win; i++)
-        if(matrix[i][boardSize-i-1].side != testPlayer){
-            diagWin = false
-            break;
-        }
-    return diag1Win || diag2Win
+    let diag1Win = true;
+  for (let i = 0; i < boardSize; i++) {
+    if (matrix[i][i].side != testPlayer) {
+      diag1Win = false;
+      break;
+    }
+  }
+  
+  let diag2Win = true;
+  for (let i = 0; i < boardSize; i++) {
+    if (matrix[i][boardSize - i - 1].side != testPlayer) {
+      diag2Win = false;
+      break;
+    }
+  }
+  return diag1Win || diag2Win;
 }
 //-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
 function change(chosen, target) {
@@ -170,4 +212,34 @@ function change(chosen, target) {
             matrix[target.i][target.j].side = game.playerTurn;
         }
     }
+}
+function botMakeRandomMove() {
+  let availableMoves = [];
+  for (let i = 0; i < boardSize; i++) {
+      for (let j = 0; j < boardSize; j++) {
+          if ((matrix[i][j].side == 0 || matrix[i][j].side == 2)) {
+              availableMoves.push({ i, j });
+          }
+      }
+  }
+
+  if (availableMoves.length > 0) {
+      const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+      clickedSquare(move.i, move.j);
+
+      availableMoves = [];
+      for (let i = 0; i < boardSize; i++) {
+          for (let j = 0; j < boardSize; j++) {
+              if ((i == move.i) || (j == move.j)) {
+                  availableMoves.push({ i, j });
+              }
+          }
+      }
+
+      if (availableMoves.length > 0) {
+          const secondMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+          change(move, secondMove);
+          game.playerTurn = 1;
+      }
+  }
 }
