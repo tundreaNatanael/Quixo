@@ -46,6 +46,10 @@ function drawResetButton() {
 }
 //functia care deseneaza butonu de jucat cu bot usor
 function drawPlayerVsBotEasyButton() {
+    if(game.typeOfGame == 1)
+        playerVeasyBotButton.color = playerVeasyBotButton.selectedColor;
+    else
+        playerVeasyBotButton.color = playerVeasyBotButton.normalColor;
     fill(playerVeasyBotButton.color);
     rect(playerVeasyBotButton.x, playerVeasyBotButton.y, playerVeasyBotButton.xSize, playerVeasyBotButton.ySize);
     fill( playerVeasyBotButton.text.color);
