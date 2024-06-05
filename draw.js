@@ -54,12 +54,19 @@ function drawPlayerVsBotEasyButton() {
 }
 //functia care ne arata care asupra carui patrat ne aflam cu mouse-ul
 function squareHover() {
-    for (let i = 0; i < boardSize; i++) {
-        for (let j = 0; j < boardSize; j++) {
-            if (mouseX > matrix[i][j].x && mouseX < matrix[i][j].x + squareSize && mouseY > matrix[i][j].y && mouseY < matrix[i][j].y + squareSize) {
-                fill(15, 0, 0, 80); // Umbra neagră cu transparență
-                rect(matrix[i][j].x, matrix[i][j].y, squareSize, squareSize); // Desenăm umbra peste pătrat
-            }
-        }
+    for (let k = 0; k < boardSize; k++) {
+        if (mouseX > matrix[k][0].x && mouseX < matrix[k][0].x + squareSize && mouseY > matrix[k][0].y && mouseY < matrix[k][0].y + squareSize) {
+            fill(15, 0, 0, 80); // Umbra neagră cu transparență
+            rect(matrix[k][0].x, matrix[k][0].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+        } else if (mouseX > matrix[0][k].x && mouseX < matrix[0][k].x + squareSize && mouseY > matrix[0][k].y && mouseY < matrix[0][k].y + squareSize) {
+            fill(15, 0, 0, 80); // Umbra neagră cu transparență
+            rect(matrix[0][k].x, matrix[0][k].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+        } else if (mouseX > matrix[k][boardSize-1].x && mouseX < matrix[k][boardSize-1].x + squareSize && mouseY > matrix[k][boardSize-1].y && mouseY < matrix[k][boardSize-1].y + squareSize) {
+            fill(15, 0, 0, 80); // Umbra neagră cu transparență
+            rect(matrix[k][boardSize-1].x, matrix[k][boardSize-1].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+        } else if (mouseX > matrix[boardSize-1][k].x && mouseX < matrix[boardSize-1][k].x + squareSize && mouseY > matrix[boardSize-1][k].y && mouseY < matrix[boardSize-1][k].y + squareSize) {
+            fill(15, 0, 0, 80); // Umbra neagră cu transparență
+            rect(matrix[boardSize-1][k].x, matrix[boardSize-1][k].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+        } 
     }
 }
