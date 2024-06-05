@@ -3,7 +3,7 @@ const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#99582a"; //culoarea patratelor
 const squareHoverColor = "grey"; //culoarea patratelor cand trecem cu mouse-ul peste ele
-const squareSelectedColor = "yellow"; //culoarea patratelor selectate
+const squareSelectedColor = "#99742a"; //culoarea patratelor selectate
 const startBoardX = 450; //pozitia x de start a tablei de joc
 const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
@@ -85,6 +85,7 @@ function initGame() {
 
 //0functia care se apeleaza cand se da click pe un patrat (primeste coordonatele patratului) -> (returneaza true sau false daca sunt corecte coordonatele)
 function clickedSquare(i, j) {
+    console.log(i + " " + j + ": " + matrix[i][j].side)
     if(
         game.antSquare == 0 && //sa nu fie niciun patrat selectat anterior
         (matrix[i][j].side == 0 || matrix[i][j].side == game.playerTurn) && //patratul sa nu fie al adversarului
@@ -92,7 +93,7 @@ function clickedSquare(i, j) {
     ) 
     {
         game.antSquare = {i: i, j: j}; //game.antSquare primesc coordonatele patratului selectat
-        game.antSquare.color = squareSelectedColor; //patratul selectat devine de alta culoare
+        matrix[game.antSquare.i][game.antSquare.j].color = squareSelectedColor; //patratul selectat devine de alta culoare
         return true
     }
     else{
@@ -187,32 +188,30 @@ function checkDiagonals(testPlayer){
 }
 //-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
 function change(chosen, target) {
-    if (chosen.i == target.i) { // If the change is on the same row
+    if (chosen.i === target.i) { // If the change is on the same row
         if (chosen.j < target.j) { // If the change is towards the right
             for (let j = chosen.j; j < target.j; j++) {
                 matrix[chosen.i][j].side = matrix[chosen.i][j + 1].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         } else { // If the change is towards the left
-            for (let j = chosen.j; j >= target.j; j--) {
+            for (let j = chosen.j; j > target.j; j--) {
                 matrix[chosen.i][j].side = matrix[chosen.i][j - 1].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         }
     } else { // If the change is on the same column
         if (chosen.i < target.i) { // If the change is downwards
             for (let i = chosen.i; i < target.i; i++) {
                 matrix[i][chosen.j].side = matrix[i + 1][chosen.j].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         } else { // If the change is upwards
             for (let i = chosen.i; i > target.i; i--) {
                 matrix[i][chosen.j].side = matrix[i - 1][chosen.j].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         }
     }
+    matrix[target.i][target.j].side = game.playerTurn;
 }
+
 function botMakeRandomMove() {
   let availableMoves = [];
   for (let i = 0; i < boardSize; i++) {

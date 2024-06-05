@@ -6,7 +6,7 @@ function checkInsideBoard() {
         (startBoardX <= mouseX && mouseX <= startBoardX + boardSize * squareSize) &&
         (startBoardY <= mouseY && mouseY <= startBoardY + boardSize * squareSize)
     ){
-        clickedSquare(Math.floor((mouseY - startBoardY)/squareSize), Math.floor((mouseX - startBoardX)/squareSize));
+        clickedSquare(Math.floor((mouseX - startBoardX)/squareSize), Math.floor((mouseY - startBoardY)/squareSize));
     }
 }
 
