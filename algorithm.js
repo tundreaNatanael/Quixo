@@ -86,7 +86,6 @@ function initGame() {
 
 //0functia care se apeleaza cand se da click pe un patrat (primeste coordonatele patratului) -> (returneaza true sau false daca sunt corecte coordonatele)
 function clickedSquare(i, j) {
-    console.log(i + " " + j + ": " + matrix[i][j].side)
     if(
         game.antSquare == 0 && //sa nu fie niciun patrat selectat anterior
         (matrix[i][j].side == 0 || matrix[i][j].side == game.playerTurn) && //patratul sa nu fie al adversarului
