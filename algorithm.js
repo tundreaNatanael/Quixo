@@ -113,9 +113,11 @@ function clickedSquare(i, j) {
             game.playerTurn = 3 - game.playerTurn; //schimbam randul jucatorului
             matrix[game.antSquare.i][game.antSquare.j].color = squareColor; //patratul selectat anterior revine la culoarea initiala
             game.antSquare = 0; //deselctam patratul
-            if(game.typeOfGame == 1 && game.playerTurn == 2) //daca jucam cu botul si e randul lui
+            if(game.typeOfGame == 1 && game.playerTurn == 2) { //daca jucam cu botul si e randul lui
+                if(checkGameEnd())
+                    console.log(game.winner)
                 botMove()
-            if(checkGameEnd())
+            } else if(checkGameEnd())
                 console.log(game.winner)
             return true
         }
