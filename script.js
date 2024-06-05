@@ -9,10 +9,15 @@ function draw() {
   background(backgroundColor);
   drawCircle();
   drawPlayerVsBotEasyButton();
-  drawSquares()
-  drawGameStats();
+  if(game.winner == 0) {
+    drawSquares();
+    squareHover();
+    drawGameStats();
+  }
+  else
+    drawEndGame();
   drawResetButton();
-  squareHover();
+  
 }
 function mouseClicked() {
     checkInsideBoard();

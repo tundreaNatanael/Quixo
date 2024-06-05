@@ -78,7 +78,7 @@ function drawEndGame(){
     fill("white");
     textSize(50);
     if(game.winner == 1)
-        text(game.playerName1 + " wins!", startBoardX + boardSize * squareSize /2, startBoardY + boardSize * squareSize /2);
+        text(game.playerName1 + " wins!", startBoardX + 10, startBoardY + boardSize * squareSize /2);
     else
         text(game.playerName2 + " wins!", tabWidth / 2 - 100, tabHeight / 2);
 }
