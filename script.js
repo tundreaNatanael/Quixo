@@ -6,7 +6,7 @@ function setup() {
   initGame();
 }
 function draw() {
-  background("#ffe6a7");
+  background(backgroundColor);
   drawCircle();
   drawPlayerVsBotEasyButton();
   drawSquares();

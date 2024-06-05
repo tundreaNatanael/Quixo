@@ -17,7 +17,7 @@ function drawSquares() {
     }
 }
 function drawCircle() {
-    fill(backgroundColor);
+    fill(circleColor);
     circle(tabWidth - 700, tabHeight - 620, 740);
 }
 //functia care deseneaza informatiile despre joc

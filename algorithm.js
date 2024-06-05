@@ -1,4 +1,5 @@
-const backgroundColor = "#432818"; //culoarea de fundal
+const backgroundColor = "#ffe6a7"; //culoarea de fundal
+const circleColor = "#432818"; //culoarea de fundal
 matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
