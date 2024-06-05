@@ -48,7 +48,7 @@ const game = {
     winner : 0, //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
     playerName1: constplayerName1, //setam initial numele jucatorului 1 cu "1"
     playerName2: constplayerName2, //setam initial numele jucatorului 2 cu "2"
-    typeOfGame: 2 //tipul de joc (2 - jucator vs jucator, 1 - jucator vs calculator slab, 3 - jucator vs calculator moderat)
+    typeOfGame: 2 //tipul de joc (2 - jucator vs jucator, 1 - jucator vs calculator slab)
 };
 
 //0functia de initializare a matrix - se executa la incarcarea paginii
@@ -87,6 +87,8 @@ function initGame() {
 
 //0functia care se apeleaza cand se da click pe un patrat (primeste coordonatele patratului) -> (returneaza true sau false daca sunt corecte coordonatele)
 function clickedSquare(i, j) {
+    if(i < 0 || i >= boardSize || j < 0 || j >= boardSize) //daca coordonatele sunt in afara tablei de joc
+        return false
     if(
         game.antSquare == 0 && //sa nu fie niciun patrat selectat anterior
         (matrix[i][j].side == 0 || matrix[i][j].side == game.playerTurn) && //patratul sa nu fie al adversarului
@@ -109,6 +111,8 @@ function clickedSquare(i, j) {
             game.playerTurn = 3 - game.playerTurn; //schimbam randul jucatorului
             matrix[game.antSquare.i][game.antSquare.j].color = squareColor; //patratul selectat anterior revine la culoarea initiala
             game.antSquare = 0; //deselctam patratul
+            if(game.typeOfGame == 1 && game.playerTurn == 2) //daca jucam cu botul si e randul lui
+                botMove()
             return true
         }
     }
@@ -139,4 +143,10 @@ function change(chosen, target) {
         }
     }
     matrix[target.i][target.j].side = game.playerTurn;
+}
+
+//-functia care face miscarea botului
+function botMove(){
+    while(!clickedSquare(Math.floor((Math.random() * 10)) % boardSize, Math.floor((Math.random() * 10)) % boardSize)) {}
+    while(!clickedSquare(Math.floor((Math.random() * 10)) % boardSize, Math.floor((Math.random() * 10)) % boardSize)){}
 }

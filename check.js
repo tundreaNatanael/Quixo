@@ -26,7 +26,10 @@ function checkPlayerVsBotEasy(){
         (mouseX >= playerVeasyBotButton.x && mouseX <= playerVeasyBotButton.x + playerVeasyBotButton.xSize ) &&
         (mouseY >= playerVeasyBotButton.y && mouseY <= playerVeasyBotButton.y +playerVeasyBotButton.ySize)
     ){
-        game.typeOfGame = 2;
+        game.typeOfGame = 3 - game.typeOfGame;
+        console.log(game.typeOfGame)
+        initGame();
+        game.constplayerName2 = "Bot";
     }
 }
 
