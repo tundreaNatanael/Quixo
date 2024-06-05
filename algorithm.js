@@ -114,78 +114,6 @@ function clickedSquare(i, j) {
     return false
 }
 
-//0functia care verifica daca jocul mai poate fi jucat (ramane 0 sau modifica game.winner cu 1 sau 2 daca este castigator)
-function checkGameEnd(){
-    if(checkWinner(3 - game.playerTurn)){
-        if(checkWinner(game.playerTurn)){
-            game.winner = game.playerTurn
-            return true
-        }
-        else{
-            game.winner = 3 - game.playerTurn //castgatorul este celalalt jucator
-            return true
-        }
-    }
-    return false
-}
-
-//-functia care verifica daca jucatorul trimis ca parametru a castigat (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkWinner(checkPlayer){
-    if(checkLines(checkPlayer) || checkColumns(checkPlayer) || checkDiagonals(checkPlayer))
-        return true
-    return false
-}
-
-//-functia care verifica daca jucatorul a castigat pe linii (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkLines(testPlayer){
-    for (let i = 0; i < boardSize; i++) {
-        let lineWin = true;
-        for (let j = 0; j < boardSize; j++) {
-          if (matrix[i][j].side != testPlayer) {
-            lineWin = false;
-            break;
-          }
-        }
-        if (lineWin) return true;
-      }
-      return false;
-    }
-
-//-functia care verifica daca jucatorul a castigat pe coloane (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkColumns(testPlayer){
-    for (let j = 0; j < boardSize; j++) {
-        let colWin = true;
-        for (let i = 0; i < boardSize; i++) {
-          if (matrix[i][j].side != testPlayer) {
-            colWin = false;
-            break;
-          }
-        }
-        if (colWin) return true;
-      }
-      return false;
-    }
-    
-
-//-functia care verifica daca jucatorul a castigat pe diagonale (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkDiagonals(testPlayer){
-    let diag1Win = true;
-  for (let i = 0; i < boardSize; i++) {
-    if (matrix[i][i].side != testPlayer) {
-      diag1Win = false;
-      break;
-    }
-  }
-  
-  let diag2Win = true;
-  for (let i = 0; i < boardSize; i++) {
-    if (matrix[i][boardSize - i - 1].side != testPlayer) {
-      diag2Win = false;
-      break;
-    }
-  }
-  return diag1Win || diag2Win;
-}
 //-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
 function change(chosen, target) {
     if (chosen.i === target.i) { // If the change is on the same row
@@ -210,35 +138,4 @@ function change(chosen, target) {
         }
     }
     matrix[target.i][target.j].side = game.playerTurn;
-}
-
-function botMakeRandomMove() {
-  let availableMoves = [];
-  for (let i = 0; i < boardSize; i++) {
-      for (let j = 0; j < boardSize; j++) {
-          if ((matrix[i][j].side == 0 || matrix[i][j].side == 2)) {
-              availableMoves.push({ i, j });
-          }
-      }
-  }
-
-  if (availableMoves.length > 0) {
-      const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
-      clickedSquare(move.i, move.j);
-
-      availableMoves = [];
-      for (let i = 0; i < boardSize; i++) {
-          for (let j = 0; j < boardSize; j++) {
-              if ((i == move.i) || (j == move.j)) {
-                  availableMoves.push({ i, j });
-              }
-          }
-      }
-
-      if (availableMoves.length > 0) {
-          const secondMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
-          change(move, secondMove);
-          game.playerTurn = 1;
-      }
-  }
 }

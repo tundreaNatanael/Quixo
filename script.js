@@ -20,8 +20,9 @@ function draw() {
   }
 }
 function mouseClicked() {
-   checkInsideBoard();
+    checkInsideBoard();
     checkReset();
-   checkPlayerVsBotEasy()
+    checkPlayerVsBotEasy();
+    
 }
 
