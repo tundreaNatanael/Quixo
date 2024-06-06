@@ -3,7 +3,7 @@ function drawSquares() {
     for (let i = 0; i < boardSize; i++) {
         for (let j = 0; j < boardSize; j++) {
             fill(matrix[i][j].color);
-            square(matrix[i][j].x, matrix[i][j].y, squareSize, squareSelectedColor);
+            square(matrix[i][j].x, matrix[i][j].y, squareSize, squareRadius);
             if (matrix[i][j].side == 1) {
                 textSize(64);
                 fill("black");
