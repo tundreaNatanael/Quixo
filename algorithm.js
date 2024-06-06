@@ -5,6 +5,7 @@ const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
 const squareColor = "#99582a"; //culoarea patratelor
 const squareHoverColor = "grey"; //culoarea patratelor cand trecem cu mouse-ul peste ele
+const squareRadius = 10; //rotunjirea patratelor
 const squareSelectedColor = "#99742a"; //culoarea patratelor selectate
 const startBoardX = 450; //pozitia x de start a tablei de joc
 const startBoardY = 120; //pozitia y de start a tablei de joc
