@@ -1,11 +1,47 @@
-const matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
+const backgroundColor = "#ffe6a7"; //culoarea de fundal
+const circleColor = "#432818"; //culoarea de fundal
+matrix = []; //matrix de patrate (globala) - fiecare patrat are x, y, color si side (0 - gol, 1 - X, 2 - 0)
 const boardSize = 5; //dimensiunea tablei de joc de 5x5
 const squareSize = 100; //dimensiunea unui patrat de 100x100 pixeli
-const squareColor = "#8f2e04"; //culoarea patratelor
-const startBoardX = 0; //pozitia x de start a tablei de joc
-const startBoardY = 0; //pozitia y de start a tablei de joc
+const squareColor = "#99582a"; //culoarea patratelor
+const squareHoverColor = "grey"; //culoarea patratelor cand trecem cu mouse-ul peste ele
+const squareSelectedColor = "#99742a"; //culoarea patratelor selectate
+const startBoardX = 450; //pozitia x de start a tablei de joc
+const startBoardY = 120; //pozitia y de start a tablei de joc
 constplayerName1 = "X";
 constplayerName2 = "O";
+
+resetButton = {
+    x: 850,
+    y: 620,
+    xSize: 100,
+    ySize: 30,
+    color: "#6f1d1b",
+    text: {
+        x: 850 + 20,
+        y: 620 + 20,
+        size: 21,
+        color: "white",
+        text: "Reset"
+    }
+}
+
+playerVeasyBotButton = {
+    x: 1200,
+    y: 10,
+    xSize: 190,
+    ySize: 30,
+    color: "#6f1d1b",
+    normalColor: "#6f1d1b",
+    selectedColor: "black",
+    text: {
+        x: 1200 + 10,
+        y: 10 + 22,
+        size: 21,
+        color: "white",
+        text: "Player vs easyBot"
+    }
+}
 
 //obiectul care contine informatii despre joc
 const game = {
@@ -19,6 +55,7 @@ const game = {
 //0functia de initializare a matrix - se executa la incarcarea paginii
 function initGame() {
     //reluam jocul de la inceput
+    matrix = [] //golim matrix
     game.playerTurn = 1 //jucatorul curent (1 - X, 2 - 0)
     game.antSquare = 0 //patratul pe care s-a dat click anterior - daca e 0 atuncea inseamna ca nu s-a dat click anterior (i, j)
     game.winner = 0 //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
@@ -51,6 +88,8 @@ function initGame() {
 
 //0functia care se apeleaza cand se da click pe un patrat (primeste coordonatele patratului) -> (returneaza true sau false daca sunt corecte coordonatele)
 function clickedSquare(i, j) {
+    if(i < 0 || i >= boardSize || j < 0 || j >= boardSize) //daca coordonatele sunt in afara tablei de joc
+        return false
     if(
         game.antSquare == 0 && //sa nu fie niciun patrat selectat anterior
         (matrix[i][j].side == 0 || matrix[i][j].side == game.playerTurn) && //patratul sa nu fie al adversarului
@@ -58,6 +97,7 @@ function clickedSquare(i, j) {
     ) 
     {
         game.antSquare = {i: i, j: j}; //game.antSquare primesc coordonatele patratului selectat
+        matrix[game.antSquare.i][game.antSquare.j].color = squareSelectedColor; //patratul selectat devine de alta culoare
         return true
     }
     else{
@@ -70,103 +110,48 @@ function clickedSquare(i, j) {
         ){
             change(game.antSquare, {i: i, j: j}) //facem schimbarea
             game.playerTurn = 3 - game.playerTurn; //schimbam randul jucatorului
+            matrix[game.antSquare.i][game.antSquare.j].color = squareColor; //patratul selectat anterior revine la culoarea initiala
             game.antSquare = 0; //deselctam patratul
+            if(game.typeOfGame == 1 && game.playerTurn == 2) { //daca jucam cu botul si e randul lui
+                if(checkGameEnd())
+                    console.log(game.winner)
+                botMove()
+            } else if(checkGameEnd())
+                console.log(game.winner)
             return true
         }
     }
     return false
 }
 
-//0functia care verifica daca jocul mai poate fi jucat (ramane 0 sau modifica game.winner cu 1 sau 2 daca este castigator)
-function checkGameEnd(){
-    if(checkWinner(3 - game.playerTurn)){
-        if(checkWinner(game.playerTurn)){
-            game.winner = game.playerTurn
-            return true
-        }
-        else{
-            game.winner = 3 - game.playerTurn //castgatorul este celalalt jucator
-            return true
-        }
-    }
-    return false
-}
-
-//-functia care verifica daca jucatorul trimis ca parametru a castigat (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkWinner(checkPlayer){
-    if(checkLines(checkPlayer) || checkColumns(checkPlayer) || checkDiagonals(checkPlayer))
-        return true
-    return false
-}
-
-//-functia care verifica daca jucatorul a castigat pe linii (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkLines(testPlayer){
-    let lineWin = true
-    for(let i=0; i<boardSize && lineWin; i++){
-        for(let j=0; j<boardSize; j++)
-            if(matrix[i][j].side != testPlayer){
-                lineWin = false
-                break;
-            }
-    }
-    return lineWin
-}
-
-//-functia care verifica daca jucatorul a castigat pe coloane (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkColumns(testPlayer){
-    let colWin = true
-    for(let j=0; j<boardSize && colWin; j++){
-        for(let i=0; i<boardSize; i++)
-            if(matrix[i][j].side != testPlayer){
-                colWin = false
-                break;
-            }
-    }
-    return colWin
-}
-
-//-functia care verifica daca jucatorul a castigat pe diagonale (returneaza true - daca a castigat, false - daca nu a castigat)
-function checkDiagonals(testPlayer){
-    let diag1Win = true
-    for(let i=0; i<boardSize && diag1Win; i++)
-        if(matrix[i][i].side != testPlayer){
-            diagWin = false
-            break;
-        }
-    
-    let diag2Win = true
-    for(let i=0; i<boardSize && diag2Win; i++)
-        if(matrix[i][boardSize-i-1].side != testPlayer){
-            diagWin = false
-            break;
-        }
-    return diag1Win || diag2Win
-}
 //-functia care este apelata din clickedSquare si care face miscarea randului/coloanei (primeste coordonatele patratelor chosen (cel ales anterior) si target (cel pe care vrea jucatorul sa il schimbe))
 function change(chosen, target) {
-    if (chosen.i == target.i) { // If the change is on the same row
+    if (chosen.i === target.i) { // If the change is on the same row
         if (chosen.j < target.j) { // If the change is towards the right
             for (let j = chosen.j; j < target.j; j++) {
                 matrix[chosen.i][j].side = matrix[chosen.i][j + 1].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         } else { // If the change is towards the left
-            for (let j = chosen.j; j >= target.j; j--) {
+            for (let j = chosen.j; j > target.j; j--) {
                 matrix[chosen.i][j].side = matrix[chosen.i][j - 1].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         }
     } else { // If the change is on the same column
         if (chosen.i < target.i) { // If the change is downwards
             for (let i = chosen.i; i < target.i; i++) {
                 matrix[i][chosen.j].side = matrix[i + 1][chosen.j].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         } else { // If the change is upwards
             for (let i = chosen.i; i > target.i; i--) {
                 matrix[i][chosen.j].side = matrix[i - 1][chosen.j].side;
             }
-            matrix[target.i][target.j].side = game.playerTurn;
         }
     }
+    matrix[target.i][target.j].side = game.playerTurn;
+}
+
+//-functia care face miscarea botului
+function botMove(){
+    while(!clickedSquare(Math.floor((Math.random() * 10)) % boardSize, Math.floor((Math.random() * 10)) % boardSize)) {}
+    while(!clickedSquare(Math.floor((Math.random() * 10)) % boardSize, Math.floor((Math.random() * 10)) % boardSize)) {}
 }
