@@ -22,7 +22,7 @@ function drawCircle() {
 }
 function drawSquares2(){
     fill("#b08968");
-    square(tabWidth - 960 , tabHeight - 890, 520);
+    square(tabWidth - 960 , tabHeight - 890, 520, squareRadius);
 }
 //functia care deseneaza informatiile despre joc
 function drawGameStats() {
