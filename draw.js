@@ -18,7 +18,7 @@ function drawSquares() {
 }
 function drawCircle() {
     fill(circleColor);
-    circle(tabWidth - 700, tabHeight - 620, 740);
+    circle(tabWidth - 700, tabHeight - 620, 760);
 }
 //functia care deseneaza informatiile despre joc
 function drawGameStats() {
@@ -61,16 +61,16 @@ function squareHover() {
     for (let k = 0; k < boardSize; k++) {
         if (mouseX > matrix[k][0].x && mouseX < matrix[k][0].x + squareSize && mouseY > matrix[k][0].y && mouseY < matrix[k][0].y + squareSize) {
             fill(15, 0, 0, 80); // Umbra neagră cu transparență
-            rect(matrix[k][0].x, matrix[k][0].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+            rect(matrix[k][0].x, matrix[k][0].y, squareSize, squareSize, squareRadius); // Desenăm umbra peste pătrat
         } else if (mouseX > matrix[0][k].x && mouseX < matrix[0][k].x + squareSize && mouseY > matrix[0][k].y && mouseY < matrix[0][k].y + squareSize) {
             fill(15, 0, 0, 80); // Umbra neagră cu transparență
-            rect(matrix[0][k].x, matrix[0][k].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+            rect(matrix[0][k].x, matrix[0][k].y, squareSize, squareSize, squareRadius); // Desenăm umbra peste pătrat
         } else if (mouseX > matrix[k][boardSize-1].x && mouseX < matrix[k][boardSize-1].x + squareSize && mouseY > matrix[k][boardSize-1].y && mouseY < matrix[k][boardSize-1].y + squareSize) {
             fill(15, 0, 0, 80); // Umbra neagră cu transparență
-            rect(matrix[k][boardSize-1].x, matrix[k][boardSize-1].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+            rect(matrix[k][boardSize-1].x, matrix[k][boardSize-1].y, squareSize, squareSize, squareRadius); // Desenăm umbra peste pătrat
         } else if (mouseX > matrix[boardSize-1][k].x && mouseX < matrix[boardSize-1][k].x + squareSize && mouseY > matrix[boardSize-1][k].y && mouseY < matrix[boardSize-1][k].y + squareSize) {
             fill(15, 0, 0, 80); // Umbra neagră cu transparență
-            rect(matrix[boardSize-1][k].x, matrix[boardSize-1][k].y, squareSize, squareSize); // Desenăm umbra peste pătrat
+            rect(matrix[boardSize-1][k].x, matrix[boardSize-1][k].y, squareSize, squareSize, squareRadius); // Desenăm umbra peste pătrat
         } 
     }
 }
