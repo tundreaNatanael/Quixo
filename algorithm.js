@@ -33,7 +33,7 @@ playerVeasyBotButton = {
     xSize: 190,
     ySize: 30,
     color: "#6f1d1b",
-    normalColor: "#6f1d1b",
+    normalColor: "#ab5957",
     selectedColor: "black",
     text: {
         x: 1200 + 10,
