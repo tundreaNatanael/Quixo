@@ -50,6 +50,7 @@ const game = {
     winner : 0, //castigatorul jocului (0 - nimeni, 1 - X, 2 - 0)
     playerName1: constplayerName1, //setam initial numele jucatorului 1 cu "1"
     playerName2: constplayerName2, //setam initial numele jucatorului 2 cu "2"
+    typeOfGame: 1 //tipul de joc (1 - player vs player, 2 - player vs easyBot)
 };
 
 //0functia de initializare a matrix - se executa la incarcarea paginii
