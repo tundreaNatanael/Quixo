@@ -20,6 +20,10 @@ function drawCircle() {
     fill(circleColor);
     circle(tabWidth - 700, tabHeight - 620, 760);
 }
+function drawSquares2(){
+    fill("#b08968");
+    square(tabWidth - 960 , tabHeight - 890, 520);
+}
 //functia care deseneaza informatiile despre joc
 function drawGameStats() {
     fill("#6f1d1b"); // Culoarea pătratului

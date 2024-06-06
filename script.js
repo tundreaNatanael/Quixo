@@ -8,6 +8,7 @@ function setup() {
 function draw() {
   background(backgroundColor);
   drawCircle();
+  drawSquares2();
   drawPlayerVsBotEasyButton();
   if(game.winner == 0) {
     drawSquares();
